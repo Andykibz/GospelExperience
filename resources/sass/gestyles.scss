@@ -1,0 +1,478 @@
+@import "partials/_variables.scss";
+@import "partials/_footer.scss";
+@import "partials/_mastheader.scss";
+@import "partials/_navmenu.scss";
+@import "partials/_gallery.scss";
+@import "partials/_blogCard.scss";
+@import "partials/_mediaQueries.scss";
+@import "partials/_speakers.scss";
+@import "partials/_elements.scss";
+
+
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+html,body{
+  height:100%
+}
+
+body {
+  color: #2f3138;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1.1em;
+  color: $gray-800;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,5,10,0)),to(rgba(0,0,0,0)));
+  // background: linear-gradient(to bottom, rgba(0,5,10,0.3) 0%,rgba(0,0,0,0) 100%);
+  // font-family: 'Droid Serif', serif;
+}
+
+a {
+  color: $theme-color;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+a:hover,
+a:active,
+a:focus {
+  color: $hover;
+  outline: none;
+  text-decoration: none;
+}
+
+p {
+  padding: 0;
+  margin: 0 0 30px 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+  padding: 0;
+  color: #0e1b4d;
+}
+
+.main-page {
+  margin-top: 70px;
+}
+
+
+.gallery-carousel{
+    max-height: 300px;
+    overflow: hidden;
+}
+.image-gallery{
+  overflow: hidden;
+  max-height: 180px;
+    img{
+      width: 100%;
+
+    }
+}
+
+.heading3{
+  display: none;
+  position: relative;
+  // padding: .4em;
+  margin-bottom: 0.8em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+
+    h3{
+      max-width: 80%;
+      font-size: 1.8em;
+      font-family: 'Trocchi', ;
+      left: 50%;
+      color: $brownish;
+      line-height: 2;
+      margin-bottom: 0;
+    }
+    h3::before, h3::after{
+        content: '~';
+        position: relative;
+        margin: 0 10px;
+    }
+    &::before{
+      content: '';
+      position: absolute;
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: $gray-600;
+      bottom: 0;
+      left: calc(50% - 25px);
+    }
+}
+
+
+
+.img-wrapper{
+    background: #ccc;
+    height: 300px;
+    background-position: center top;
+    overflow: hidden;
+}
+
+.usermenu{
+  overflow: hidden;
+    li{
+      display: inline;
+    }
+}
+
+.load-more{
+    background: transparent;
+    border-radius: 48%;
+    border: 1px solid $gray-900;
+    width: 96px;
+    height: 36px;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    text-align: center;
+    margin: 0; padding: 0;
+    left: 46%;
+    z-index: 0;
+    top:-16px;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    opacity: .7;
+    a{
+        i { color: $gray-900; -webkit-transition: all .3s ease-in-out;}
+        display: inherit;
+        -webkit-box-align: end;
+            -ms-flex-align: end;
+                align-items: flex-end;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        width: 100%;
+        color: inherit;
+        cursor: pointer;
+    }
+    &:hover{
+        opacity: .9;
+        background: $gray-900;
+        i{
+          color: #effffe;
+        }
+    }
+}
+
+.wow {
+  visibility: hidden;
+}
+
+/* Prelaoder */
+
+#preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  background: #fff url("../img/preloader.svg") no-repeat center center;
+}
+.label{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 800;
+}
+
+
+/************ View Link *******************/
+.readmoreLink{
+  position: absolute;
+  top   : 50%;
+  right  : 40%;
+  z-index: 2;
+}
+.view-more{
+    border: 1px solid #aaa;
+    border-top:none;
+    border-radius: 2px;
+    padding: .2em .8em;
+    background: rgba(#000,.9);
+    overflow: hidden;
+    margin: 0 auto;
+    // margin-top: 40px;
+    z-index: 1;
+    cursor: pointer;
+    -webkit-transition: color .3s;
+    transition: color .3s;
+    /* Typo */
+    text-align: center;
+    color: #fff !important;
+    &:hover{
+      color: #222;
+
+    }
+}
+.view-more:after {
+  position: absolute;
+  top: 90%; left: 0;
+  width: 100%; height: 100%;
+  background: #555;
+  content: "";
+  z-index: -2;
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+
+.view-more:hover::after {
+
+  -webkit-transform: translateY(-80%);
+          transform: translateY(-80%);
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+
+
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+
+#about {
+  background: url("../img/about-bg2.jpg");
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding: 60px 0 40px 0;
+}
+
+#about:before {
+  content: "";
+  background: rgba(13, 20, 41, 0.8);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#about h2 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+#about h3 {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+#about p {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+
+.upcoming-event-poster{
+    position: relative;
+    &::after{
+        content: '';
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+        background-color: rgba(0,0,0,.1 );
+        -webkit-box-shadow: inset 0px 0px 3rem 1rem rgba(0,0,0,0.75);
+                box-shadow: inset 0px 0px 3rem 1rem rgba(0,0,0,0.75);
+    }
+    p{
+      display: none;
+    }
+    div.overlay{
+
+    }
+}
+/*--------------------------------------------------------------
+# Mini-Banner
+--------------------------------------------------------------*/
+.mini-header{
+  width: 100%;
+  height: 20vh;
+  background: url(../img/mini-headerbg.jpg) top center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  position: relative;
+}
+
+$color: #111;
+$primary: #9DABFF;
+.readmoreLink{
+  .cta{
+    position: relative;
+    margin: auto;
+    padding: 12px 16px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    color: #ffeeff;
+    &:before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      border-radius: 28px;
+      border: 1px solid $theme-color;
+      background: rgba($theme-color,.1);
+      width: 56px;
+      height: 42px;
+      -webkit-transition: all .3s ease
+    }
+    span{
+      -webkit-transition: all .3s ease;
+      transition: all .3s ease
+    }
+    span{
+      position: relative;
+      font-size: 1.1e,m;
+      line-height: 18px;
+      font-weight: 600;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      vertical-align: middle
+    }
+    svg{
+      position: relative;
+      top: 0;
+      margin-left: 10px;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke: $color;
+      stroke-width: 2;
+      -webkit-transform: translateX(-5px);
+      transform: translateX(-5px);
+      -webkit-transition: all .3s ease;
+      transition: all .3s ease;
+    }
+    &:hover{
+      &:before{
+        width: 100%;
+        background: rgba($hover,.3);
+        border: 1px solid $hover
+      }
+      svg{
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+      }
+    }
+    &:active{
+      -webkit-transform: scale(.96);
+      transform: scale(.96)
+    }
+  }
+
+}
+
+/************* Horizontal lines *************/
+
+hr.break {
+    overflow: visible; /* For IE */
+    height: 30px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 0 0 0;
+    border-radius: 20px;
+}
+hr.break:before { /* Not really supposed to work, but does */
+    display: block;
+    content: "";
+    height: 30px;
+    margin-top: -31px;
+    border-style: solid;
+    border-color: black;
+    border-width: 0 0 1px 0;
+    bord
+
+/******************* Tags List ************************/
+.tags-list{
+    span.tag-item{
+      margin-right: 1px;
+        a{
+          border-radius: 4px;
+          background-color: rgba(#000,.1) !important;
+          border: 1px solid #999;
+          color: #fff;
+          padding: 4px 8px;
+          text-shadow: 1px 1px 1px #000;
+          &:hover{
+            background-color: rgba(#000,.4) !important;
+          }
+        }
+    }
+}
+
+/*
+ *  STYLE 3
+ */
+
+.scroll-style-3::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.scroll-style-3::-webkit-scrollbar
+{
+	width: 4px;
+	background-color: #F5F5F5;
+}
+
+.scroll-style-3::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+}
+
+
+.audio-wrap{
+    position: relative;
+    h5{
+      width: 100%;
+      position: absolute;
+      background-color: rgba(#000,.5);
+      bottom: 0;
+      text-align: center;
+      line-height: 2;
+      height: 2em;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      color: #eef;
+    }
+}
+
+
+}
